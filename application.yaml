@@ -1,4 +1,4 @@
-apiVersion: argoproj.io/v1alpha1
+  apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: testapi-argo-app
@@ -18,12 +18,14 @@ spec:
   #     strecture as well.
   #   * Create a `application.yaml` (as this one), that contains,
   #     the argocd applicatoin configuation details, will documentation.
-  #   * Create a direcory called config, for the different compenets
+  #   * Create a direcory called manifests, for the different compenets
   #     declarations (services, services, HorizantalScaling...)
+  #   * Create a direcory called kustomization, and run the following:
+  #     kustomize build manifests/ > kustomization/manifests.yaml
   source:
     repoURL: https://FaresHerhar:glpat-KpkBKHWw6zNVE7N_sRUH@gitlab.com/FaresHerhar/testapi-argocd.git
     targetRevision: HEAD
-    path: config
+    path: kustomization
 
   # This is the cluster into which the argocd applies the configuration,
   # in this case, it is an internal one, but it can external as well.
