@@ -1,0 +1,56 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: testapi-argo-app
+  namespace: argocd  # Not a choice, must respect the syntax
+spec:
+  # Every applications belongs to a single project
+  # if not specified, the application belongs to
+  # the "default" project.
+  project: default
+
+  # This is the git repository that contains and configuration files
+  # For the repo structure use this template, that goes as follows:
+  # - <application-name>-argocd, as the repository name
+  # - For the structure of the repo, must be as follows:
+  #   * Create a README.md with all the envirement details,
+  #     the configurations, and the argocd-application
+  #     strecture as well.
+  #   * Create a `application.yaml` (as this one), that contains,
+  #     the argocd applicatoin configuation details, will documentation.
+  #   * Create a direcory called config, for the different compenets
+  #     declarations (services, services, HorizantalScaling...)
+  source:
+    repoURL: https://gitlab.com/FaresHerhar/testapi-argocd.git
+    targetRevision: HEAD
+    path: config
+
+  # This is the cluster into which the argocd applies the configuration,
+  # in this case, it is an internal one, but it can external as well.
+  # For the namespace, I'am making sure that each application is being
+  # deployed into a different namaspace (i.e application isolation).
+  # The Application namespace can be created in the deployment,
+  # and other components declaration, but no need, since argocd will
+  # take care of this.
+  # For the naming of the namespaces, it goes as follows:
+  # - Each applicatoin, gets a namespace that holds the following name:
+  #   <application-name>
+  # - Each argocd applicatoin file holds the following name:
+  #   <application-name>-argo-app
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: testapi
+
+  # Ensures that the application (destination) namespace exists,
+  # in case it was not declared before.
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    # The `SelfHeal` is set to `true`, to make sure that the argocd
+    # automatically applies the echanges to envirement.
+    # The `prune` is set to `true`, to make sure that the argocd
+    # automatically applies the resources deletion envirement.
+    automated:
+      selfHeal: true
+      prune: true
