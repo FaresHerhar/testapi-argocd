@@ -23,7 +23,7 @@ spec:
   #   * Create a direcory called kustomization, and run the following:
   #     kustomize build manifests/ > kustomization/manifests.yaml
   source:
-    repoURL: https://FaresHerhar:glpat-KpkBKHWw6zNVE7N_sRUH@gitlab.com/FaresHerhar/testapi-argocd.git
+    repoURL: https://gitlab.com/FaresHerhar/testapi-argocd.git
     targetRevision: HEAD
     path: kustomization
 
