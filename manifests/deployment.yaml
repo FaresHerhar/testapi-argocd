@@ -17,3 +17,5 @@ spec:
         image: faresherhar/testapi:python-3.9-slim
         ports:
         - containerPort: 8001
+      imagePullSecrets:
+        - name: regcred
