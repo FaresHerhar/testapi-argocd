@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: testapi-argo-app
-  namespace: argocd  # Not a choice, must respect the syntax
+  namespace: openshift-operators  # Not a choice, must respect the syntax
 spec:
   # Every applications belongs to a single project
   # if not specified, the application belongs to
@@ -41,14 +41,10 @@ spec:
   #   <application-name>-argo-app
   destination:
     server: https://kubernetes.default.svc
-    namespace: testapi
 
   # Ensures that the application (destination) namespace exists,
   # in case it was not declared before.
   syncPolicy:
-    syncOptions:
-    - CreateNamespace=true
-
     # The `SelfHeal` is set to `true`, to make sure that the argocd
     # automatically applies the echanges to envirement.
     # The `prune` is set to `true`, to make sure that the argocd
