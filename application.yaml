@@ -25,7 +25,7 @@ spec:
   source:
     repoURL: https://gitlab.com/FaresHerhar/testapi-argocd.git
     targetRevision: HEAD
-    path: kustomization
+    path: manifests
 
   # This is the cluster into which the argocd applies the configuration,
   # in this case, it is an internal one, but it can external as well.
@@ -39,7 +39,7 @@ spec:
   #   <application-name>
   # - Each argocd applicatoin file holds the following name:
   #   <application-name>-argo-app
-  destination: 
+  destination:
     server: https://kubernetes.default.svc
     namespace: testapi
 
