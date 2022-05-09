@@ -34,13 +34,7 @@ subjects:
   namespace: openshift-gitops
 
 ---
-oc -n openshift-gitops create -f - << EOF
 apiVersion: v1
-stringData:
-  config: '{"bearerToken":"$(oc serviceaccounts get-token -n openshift-gitops openshift-gitops-argocd-manager)","tlsClientConfig":{"insecure":true}}'
-  name: testapi
-  namespaces: testapi
-  server: https://kubernetes.default.svc
 kind: Secret
 metadata:
   annotations:
@@ -48,5 +42,10 @@ metadata:
   labels:
     argocd.argoproj.io/secret-type: cluster
   name: cluster-kubernetes.default.svc-testapi
+  namespace: openshift-gitops
+stringData:
+  config: '{"bearerToken":"$(oc serviceaccounts get-token -n openshift-gitops openshift-gitops-argocd-manager)","tlsClientConfig":{"insecure":true}}'
+  name: testapi
+  namespaces: testapi
+  server: https://kubernetes.default.svc
 type: Opaque
-EOF
