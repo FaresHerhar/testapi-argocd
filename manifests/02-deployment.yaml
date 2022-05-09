@@ -18,5 +18,3 @@ spec:
         image: eljinliber/testapi
         ports:
         - containerPort: 8001
-      # imagePullSecrets:
-      #   - name: regcred
