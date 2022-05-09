@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: testapi
-        image: faresherhar/testapi:python-3.9-slim
+        image: eljinliber/testapi
         ports:
         - containerPort: 8001
       # imagePullSecrets:
