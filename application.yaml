@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: testapi-argo-app
-  namespace: argocd  # Not a choice, must respect the syntax
+  namespace: openshift-operators  # Not a choice, must respect the syntax
 spec:
   # Every applications belongs to a single project
   # if not specified, the application belongs to
