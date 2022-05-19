@@ -8,7 +8,7 @@ spec:
 
   source:
     repoURL: https://gitlab.com/FaresHerhar/testapi-argocd.git
-    targetRevision: HEAD
+    targetRevision: master
     path: manifests
 
   destination: 
