@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: testapi
-        image: quay.io/fherhar/testapi:latest
+        image: quay.io/faresherhar/testapi:latest
         ports:
         - containerPort: 8001
       imagePullSecrets:
