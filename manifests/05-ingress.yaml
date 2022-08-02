@@ -8,9 +8,11 @@ spec:
     - host: testapi.apps.ocp4-9.infocepo.com
       http:
         paths:
-          - path: /
+          - path: /hello
             pathType: Prefix
             backend:
               service:
                 name: testapi-service
-                port: 8080
+                port:
+                  number: 8080
+
