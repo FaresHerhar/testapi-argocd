@@ -4,11 +4,15 @@ metadata:
   name: testapi-ingress
   namespace: testapi
 spec:
+  tls:
+    - hosts:
+        - testapi.apps.ocp4-9.infocepo.com
+      secretName: testapi-tls
   rules:
     - host: testapi.apps.ocp4-9.infocepo.com
       http:
         paths:
-          - path: /hello
+          - path: /
             pathType: Prefix
             backend:
               service:
