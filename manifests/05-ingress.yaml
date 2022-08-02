@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: testapi-ingress
+  namespace: testapi
+spec:
+  rules:
+    - host: testapi.apps.ocp4-9.infocepo.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: testapi-service
+                port: 8080
