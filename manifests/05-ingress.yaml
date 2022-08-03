@@ -7,6 +7,7 @@ spec:
   tls:
     - hosts:
         - testapi.apps.ocp4-9.infocepo.com
+        - nginx.apps.ocp4-9.infocepo.com
       secretName: testapi-tls
   rules:
     - host: testapi.apps.ocp4-9.infocepo.com
