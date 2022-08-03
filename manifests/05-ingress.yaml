@@ -20,3 +20,13 @@ spec:
                 port:
                   number: 8080
 
+    - host: nginx.apps.ocp4-9.infocepo.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: nginx-service
+                port:
+                  number: 8080
