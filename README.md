@@ -9,7 +9,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: curlimages
-  namespace: default
+  namespace: trbl
 spec:
   containers:
   - name: curlimages
@@ -28,7 +28,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: dnsutils
-  namespace: default
+  namespace: trbl
 spec:
   containers:
   - name: dnsutils
@@ -44,6 +44,6 @@ spec:
 > Shell Aliases
 
 ```shell
-alias k8sdns="kubectl exec -i -t dnsutils -- nslookup"
-alias k8scurl="kubectl exec -i -t curlimages -- curl"
+alias kdns="kubectl exec -i -t dnsutils -n trbl -- nslookup"
+alias kcurl="kubectl exec -i -t curlimages -n trbl -- curl"
 ```
